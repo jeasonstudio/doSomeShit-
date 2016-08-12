@@ -6,6 +6,7 @@ app.controller('someShitCtrl', function ($scope) {
     var key = 'f5ZzwMc2MVY6ppH0ZgzM';
     $scope.SHIT = '\0';
 
+
     function doMakeIt(theStr) {
         var query = theStr;
         // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
@@ -19,11 +20,17 @@ app.controller('someShitCtrl', function ($scope) {
     }
 
     var resultShit = function (shitArr) {
+        var finalArr = new Array();
+        var shitWord = 0;
         //结果数组
-        for( var i = 0 ; i < shitArr.length ; i++ ) {
-            
+        for (var i = 0; i < shitArr.length; i++) {
+            _.each(shitArr[i].dst.split(" "), function (b, k) {
+                console.log(shitArr[i].dst.split(" ")[k]);
+                finalArr[shitWord] = shitArr[i].dst.split(" ")[k].replace(/(\w)/, function (v) { return v.toUpperCase() });
+                shitWord++;
+            });
         }
-
+        return finalArr.join("");
     }
 
     var getAjaxShit = function (query, appid, salt, from, to, sign) {
@@ -43,8 +50,8 @@ app.controller('someShitCtrl', function ($scope) {
                 if (data.error_code > 1) {
                     alert("Some Error!");
                 } else {
-                    console.log(data);
-                    resultShit(data.trans_result);
+                    console.log(data.trans_result);
+                    alert(resultShit(data.trans_result));
                 }
 
             },
@@ -58,7 +65,7 @@ app.controller('someShitCtrl', function ($scope) {
         console.log("success");
         $scope.SHIT = $("#shit").val().split("");
         _.each($scope.SHIT, function (b, k) {
-            if ($scope.SHIT[k] == "," || 　$scope.SHIT[k] == "，") {
+            if ($scope.SHIT[k] == "," || $scope.SHIT[k] == "，") {
                 $scope.SHIT[k] = '\n';
             } else { }
         })
@@ -70,4 +77,4 @@ app.controller('someShitCtrl', function ($scope) {
 
 
 
-"需要首字母大写的单词".replace(/(\w)/,function(v){return v.toUpperCase()});
+"需要首字母大写的单词".replace(/(\w)/, function (v) { return v.toUpperCase() });
