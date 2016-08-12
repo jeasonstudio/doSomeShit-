@@ -23,7 +23,7 @@
 	</header>
 	<!-- Signup Form -->
 	<form id="signup-form" method="post" action="makeIt()" class="text-center">
-		<input type="text" name="shit" id="shit" placeholder="做,一些,大便->doSomeShit" />
+		<input type="text" name="shit" id="shit" placeholder="做,一些,大便 --> doSomeShit( )" />
 		<input type="submit" value="驼峰命名法" id="doSomeShit" />
 		<input type="submit" value="下划线命名法" id="doSomeShit" />
 	</form>
@@ -38,10 +38,9 @@
                 </button>
 			</div>
 			<!-- /.box-tools -->
-		</div>
+	<div ng-repeat="x in allShits">
 		<!-- /.box-header -->
-		<div class="box-body">
-			The body of the box
+		<div class="box-body" ng-bind="x">asd
 		</div>
 		<!-- /.box-body -->
 	</div>

@@ -5,7 +5,8 @@ app.controller('someShitCtrl', function ($scope) {
     var appid = '20160811000026594';
     var key = 'f5ZzwMc2MVY6ppH0ZgzM';
     $scope.SHIT = '\0';
-
+    $scope.allShits = new Array();
+    var allShitsNum = 0;
 
     function doMakeIt(theStr) {
         var query = theStr;
@@ -52,6 +53,8 @@ app.controller('someShitCtrl', function ($scope) {
                 } else {
                     console.log(data.trans_result);
                     alert(resultShit(data.trans_result));
+                    $scope.allShits[allShitsNum] = resultShit(data.trans_result);
+                    allShitsNum++;
                 }
 
             },
