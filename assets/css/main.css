@@ -17,6 +17,8 @@
 		font: inherit;
 		vertical-align: baseline;
 		font-family: 微软雅黑;
+		text-align: center;
+		margin: 0;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -590,6 +592,7 @@
 
 	form {
 		margin: 0 0 2em 0;
+		justify-content: center;
 	}
 
 		form .message {
@@ -1110,7 +1113,7 @@
 		color: rgba(255, 255, 255, 0.5);
 		left: 4em;
 		opacity: 0.5;
-		position: absolute;
+		position: fixed;
 	}
 
 		#footer .icons {
